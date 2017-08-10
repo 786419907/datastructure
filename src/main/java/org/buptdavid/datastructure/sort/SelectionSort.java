@@ -10,19 +10,18 @@ package org.buptdavid.datastructure.sort;
  */
 public class SelectionSort implements ISort {
 
-	public void sort(int[] array) {
-		int temp = 0;
-		
-		for(int i = 0; i < array.length; i++){
-			temp = array[i];
-			for(int j = i; j < array.length; j++){
-				if(temp > array[j]){
-					temp = array[j];
+	public void sort(int[] arr) {
+	for (int i = 0; i < arr.length - 1; i++) {
+			int temp = i;
+			for (int j = i + 1; j < arr.length; j++) {
+				if (arr[temp] > arr[j]) {
+					temp = j;
 				}
 			}
-			
-			if(temp != array[i]){
-				array[i] = temp;
+			if (temp != i) {
+				arr[i] = arr[i] ^ arr[temp];
+				arr[temp] = arr[i] ^ arr[temp];
+				arr[i] = arr[i] ^ arr[temp];
 			}
 		}
 	}
